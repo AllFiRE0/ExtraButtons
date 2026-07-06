@@ -170,7 +170,7 @@ public class ButtonListener implements Listener {
             int taskId = Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
                 if (isInCommandSelectingMode(player)) {
                     exitCommandSelectingMode(player, true, true);
-                    sendMessage(player, "&e%cmi_user_chatcolor%▏  &7Время выбора истекло");
+                    sendMessage(player, "&7Время выбора истекло");
                 }
             }, timeout * 20L);
             timeoutTasks.put(playerId, taskId);
