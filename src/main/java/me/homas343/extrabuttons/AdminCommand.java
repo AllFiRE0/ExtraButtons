@@ -11,7 +11,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
             Core.getInstance().reloadConfig();
-            sender.sendMessage(");
+            sender.sendMessage("");
         } else {
             sender.sendMessage("reload");
         }
