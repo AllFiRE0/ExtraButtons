@@ -23,11 +23,12 @@ import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.scheduler.BukkitTask;
 
 public class ButtonListener implements Listener {
     private final Set<UUID> commandSelectingPlayers = new HashSet<>();
     private final Map<UUID, Long> cooldowns = new HashMap<>();
-    private final Map<UUID, Integer> timeoutTasks = new HashMap<>();
+    private final Map<UUID, BukkitTask> timeoutTasks = new HashMap<>();
     
     private FileConfiguration getConfig() {
         return Core.getInstance().getConfig();
@@ -137,9 +138,9 @@ public class ButtonListener implements Listener {
             exitCommandSelectingMode(player, false, false);
         }
         cooldowns.remove(player.getUniqueId());
-        Integer taskId = timeoutTasks.remove(player.getUniqueId());
-        if (taskId != null) {
-            Bukkit.getScheduler().cancelTask(taskId);
+        BukkitTask task = timeoutTasks.remove(player.getUniqueId());
+        if (task != null) {
+            task.cancel();
         }
     }
     
@@ -167,13 +168,13 @@ public class ButtonListener implements Listener {
         // Таймаут
         int timeout = config.getInt("timeout-seconds", 30);
         if (timeout > 0) {
-            int taskId = Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+            BukkitTask task = Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
                 if (isInCommandSelectingMode(player)) {
                     exitCommandSelectingMode(player, true, true);
                     sendMessage(player, "&e▏ &7Время выбора истекло");
                 }
             }, timeout * 20L);
-            timeoutTasks.put(playerId, taskId);
+            timeoutTasks.put(playerId, task);
         }
     }
     
@@ -183,9 +184,9 @@ public class ButtonListener implements Listener {
         commandSelectingPlayers.remove(playerId);
         
         // Отменяем таймер
-        Integer taskId = timeoutTasks.remove(playerId);
-        if (taskId != null) {
-            Bukkit.getScheduler().cancelTask(taskId);
+        BukkitTask task = timeoutTasks.remove(playerId);
+        if (task != null) {
+            task.cancel();
         }
         
         if (playSound)
