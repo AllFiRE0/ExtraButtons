@@ -1,0 +1,170 @@
+commands-list:
+  '1':
+    display_name: '&6Главное меню  |  &dМеню территорий'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;1.8'
+    left:
+      permission_required: false
+      permission: extra-button.1.left
+      conditions_required: false
+      conditions:
+        - '%player_health%>=5'
+        - '%server_name%=lobby2'
+      commands:
+        - '[console] dmenu open exen_mainmenu %player_name%'
+    right:
+      permission_required: false
+      permission: extra-button.1.right
+      conditions_required: false
+      conditions:
+        - '%player_health%>=5'
+        - '%server_name%=lobby2'
+      commands:
+        - '[console] dmenu open exen_territorymenu %player_name%'
+  '2':
+    display_name: '&6Профиль  |  &eБаланс'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;1.6'
+    left:
+      permission_required: false
+      permission: extra-button.2.left
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &c&lПрофиль'
+    right:
+      permission_required: false
+      permission: extra-button.2.right
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &a&lВаш баланс'
+  '3':
+    display_name: '&x&D&D&4&E&4&E&lРегион  |  &x&D&D&4&E&4&E&lИнфо'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;1.4'
+    left:
+      permission_required: false
+      permission: extra-button.3.left
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &c&lВоспользуйтесь командой &r&f/r'
+    right:
+      permission_required: false
+      permission: extra-button.3.right
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &a&lИнформация о регионе'
+  '4':
+    display_name: '&b&lСумка  |  &e&lЭндер-сундук'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;1.2'
+    left:
+      permission_required: false
+      permission: extra-button.4.left
+      conditions_required: false
+      commands:
+        - '[player] backpack'
+    right:
+      permission_required: false
+      permission: extra-button.4.right
+      conditions_required: false
+      commands:
+        - '[player] ec'
+  '5':
+    display_name: '&x&D&D&4&E&4&E&lМеню рецептов  |  &x&D&D&4&E&4&E&lИнфо'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;1.0'
+    left:
+      permission_required: false
+      permission: extra-button.5.left
+      conditions_required: false
+      commands:
+        - '[console] dmenu open exen_craftsmenu %player_name%'
+    right:
+      permission_required: false
+      permission: extra-button.5.right
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &a&lРецепты крафта'
+  '6':
+    display_name: '&x&D&D&4&E&4&E&lЛокации  |  &x&D&D&4&E&4&E&lТелепорт'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;0.8'
+    left:
+      permission_required: false
+      permission: extra-button.6.left
+      conditions_required: false
+      commands:
+        - '[console] dmenu open exen_locatemenu %player_name%'
+    right:
+      permission_required: false
+      permission: extra-button.6.right
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &a&lИспользуйте /warp'
+  '7':
+    display_name: '&x&D&D&4&E&4&E&lПокупки  |  &x&D&D&4&E&4&E&lМагазин'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;0.6'
+    left:
+      permission_required: false
+      permission: extra-button.7.left
+      conditions_required: false
+      commands:
+        - '[console] dmenu open exen_shopmenu %player_name%'
+    right:
+      permission_required: false
+      permission: extra-button.7.right
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &a&lМагазин /shop'
+  '8':
+    display_name: '&x&D&D&4&E&4&E&lНастройки  |  &x&D&D&4&E&4&E&lЯзык'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;0.4'
+    left:
+      permission_required: false
+      permission: extra-button.8.left
+      conditions_required: false
+      commands:
+        - '[console] dmenu open exen_settingsmenu %player_name%'
+    right:
+      permission_required: false
+      permission: extra-button.8.right
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &a&lЯзык: Русский'
+  '9':
+    display_name: '&x&D&D&4&E&4&E&lПомощь  |  &x&D&D&4&E&4&E&lПоддержка'
+    switch-sound: 'UI_BUTTON_CLICK;0.3;0.2'
+    left:
+      permission_required: false
+      permission: extra-button.9.left
+      conditions_required: false
+      commands:
+        - '[console] dmenu open exen_helpmenu %player_name%'
+    right:
+      permission_required: false
+      permission: extra-button.9.right
+      conditions_required: false
+      commands:
+        - '[console] cmi actionbarmsg %player_name% -s:5 &a&lОбратитесь к администратору'
+
+# Отмена сессии
+cancel-on:
+  quit: true
+  death: true
+
+# Таймаут выбора
+timeout-seconds: 30
+
+# Звуки входа/выхода
+enter-sound: 'UI_BUTTON_CLICK;0.2;2'
+leave-sound: 'UI_BUTTON_CLICK;0.2;1'
+no-permission-sound: 'ENTITY_VILLAGER_NO;0.2;1'
+
+# Права
+use-permission: extrabutton.use
+require-permission-to-use: false
+
+# Задержка
+cooldown-in-seconds: 5
+
+messages:
+  enter-in-select-mode: '&e%cmi_user_chatcolor%▏  &7Выбᴇритᴇ слот колᴇсом и нᴀжмитᴇ &eЛ&6КМ &7или &eП&6КМ'
+  send-enter-in-select-mode: true
+  leave-select-mode: '&e%cmi_user_chatcolor%▏  &7Открытиᴇ мᴇню отмᴇнᴇно'
+  send-leave-select-mode: true
+  no-permissions: '&e%cmi_user_chatcolor%▏  &7У вас нет прав для этого действия'
+  conditions-not-met: '&e%cmi_user_chatcolor%▏  &7Условия не выполнены'

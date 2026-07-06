@@ -1,0 +1,11 @@
+name: ExtraButtons
+version: '1.0'
+main: me.homas343.extrabuttons.Core
+api-version: '1.21'
+depend:
+  - PlaceholderAPI
+commands:
+  extrabutton:
+    permission: extrabutton.admin
+    aliases:
+      - axb
