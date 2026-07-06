@@ -12,7 +12,7 @@ public final class Core extends JavaPlugin {
         saveDefaultConfig();
         instance = this;
         ConsoleCommandSender c = Bukkit.getConsoleSender();
-        c.sendMessage(");
+        c.sendMessage("");
         Bukkit.getServer().getPluginManager().registerEvents(new ButtonListener(), (Plugin)this);
         getCommand("extrabutton").setExecutor(new AdminCommand());
         getCommand("extrabutton").setTabCompleter(new AdminCommand());
